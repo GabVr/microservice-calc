@@ -13,13 +13,27 @@ services:
     sub:
         build: sub
 
+    mult-1:
+        build: mult
+        container_name: mult-1
+
+    mult-2:
+        build: mult
+        container_name: mult-2
+
+    mult-3:
+        build: mult
+        container_name: mult-3
     nginx:
         container_name: nginx
         build: nginx
         ports:
             - 8080:80
         depends_on:
-           - ping
-           - calc
-           - soma
-           - sub
+            - ping
+            - calc
+            - soma
+            - sub
+            - mult-1
+            - mult-2
+            - mult-3
